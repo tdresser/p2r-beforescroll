@@ -179,11 +179,9 @@ Polymer('polymer-p2r', {
     }
 
     function finishPull(velocity) {
-      console.log("FINISHPULL");
       if (getHeaderClassName() == 'pulled') {
         setHeaderClassName('loading');
         setTimeout(finishLoading, 2000);
-        console.log("VELOCITY " + velocity);
         if (velocity > -2)
           overscroll.setTarget(loadingOffset);
         overscroll.setVelocity(velocity);
@@ -207,8 +205,11 @@ Polymer('polymer-p2r', {
 
     scroller.addEventListener('beforescroll', function(e) {
       inScroll = !e.isEnding;
-      console.log("INSCROLL? " + inScroll);
       global_offset += e.deltaY;
+
+      // Don't run off the bottom.
+      if (global_offset > 0)
+        global_offset = scroller.scrollTop;
 
       overscroll.setOffset(global_offset);
 
