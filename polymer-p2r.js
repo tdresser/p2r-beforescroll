@@ -179,6 +179,7 @@ Polymer('polymer-p2r', {
     }
 
     function finishPull(velocity) {
+      console.log("FINISHPULL");
       if (getHeaderClassName() == 'pulled') {
         setHeaderClassName('loading');
         setTimeout(finishLoading, 2000);
