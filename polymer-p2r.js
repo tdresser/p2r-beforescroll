@@ -162,7 +162,7 @@ Polymer('polymer-p2r', {
       if (overscroll.getOffset() < 0) {
         scroller.scrollTop = -overscroll.getOffset();
         console.log("RESET OFFSET");
-        global_offset = scroller.scrollTop;
+        global_offset = -scroller.scrollTop;
 
         overscroll.setOffset(0);
         console.log("SET TO 0");
