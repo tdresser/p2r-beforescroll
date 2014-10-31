@@ -208,8 +208,10 @@ Polymer('polymer-p2r', {
       global_offset += e.deltaY;
 
       // Don't run off the bottom.
-      if (global_offset > 0)
+      if (global_offset > 0) {
         global_offset = scroller.scrollTop;
+      }
+      console.log("GLOBAL " + global_offset);
 
       overscroll.setOffset(global_offset);
 
