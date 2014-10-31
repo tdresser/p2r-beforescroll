@@ -182,7 +182,9 @@ Polymer('polymer-p2r', {
       if (getHeaderClassName() == 'pulled') {
         setHeaderClassName('loading');
         setTimeout(finishLoading, 2000);
-        overscroll.setTarget(loadingOffset);
+        console.log("VELOCITY " + velocity);
+        if (velocity < 5)
+          overscroll.setTarget(loadingOffset);
         overscroll.setVelocity(velocity);
       } else {
         console.log(scroller.scrollTop);
