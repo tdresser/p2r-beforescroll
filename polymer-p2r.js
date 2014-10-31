@@ -53,8 +53,6 @@ function Overscroll(max_offset) {
       return false;
     }
 
-    console.log("TARGET " + target);
-
     var current_distance = d;
 
     var target_pos = target === null ? 0 : target;
@@ -156,16 +154,11 @@ Polymer('polymer-p2r', {
 
       global_offset = overscroll.getOffset();
 
-      console.log("GLOBAL OFFSET " + global_offset);
-      console.log("SCROLL TOP " + scroller.scrollTop);
-
       if (overscroll.getOffset() < 0) {
         scroller.scrollTop = -overscroll.getOffset();
-        console.log("RESET OFFSET");
+        // Prevent scrolling off the bottom.
         global_offset = -scroller.scrollTop;
-
         overscroll.setOffset(0);
-        console.log("SET TO 0");
       }
 
       var offset = overscroll.addFriction(overscroll.getOffset());
@@ -192,7 +185,6 @@ Polymer('polymer-p2r', {
           overscroll.setTarget(loadingOffset);
         overscroll.setVelocity(velocity);
       } else {
-        console.log(scroller.scrollTop);
         overscroll.setTarget(0);
         overscroll.setVelocity(velocity);
       }
@@ -212,8 +204,6 @@ Polymer('polymer-p2r', {
     scroller.addEventListener('beforescroll', function(e) {
       inScroll = !e.isEnding;
       global_offset += e.deltaY;
-
-      console.log("GLOBAL " + global_offset);
 
       overscroll.setOffset(global_offset);
 
