@@ -156,7 +156,7 @@ Polymer('polymer-p2r', {
 
       global_offset = overscroll.getOffset();
 
-      if (global_offset < 0)
+      if (global_offset > 0)
         global_offset = scroller.scrollTop;
 
       if (overscroll.getOffset() < 0) {
