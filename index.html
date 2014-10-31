@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="bower_components/platform/platform.js"></script>
+    <meta name="viewport" content="width=device-width, user-scalable=no">
+    <link rel="import" href="polymer-p2r.html">
+    <META HTTP-EQUIV="Pragma" CONTENT="no-cache">
+    <title>Polymer Pull to Refresh demo</title>
+  </head>
+
+  <style>
+    html, body, polymer-p2r {
+      height:100%;
+      overflow:hidden;
+      margin:0;
+    }
+
+    polymer-p2r .header-div {
+      background-color: #6b6;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+      height:800px;
+      text-align:center;
+      padding-top:750px;
+      width: 100%;
+    }
+
+    polymer-p2r .header-div p {
+      position:absolute;
+      left:0;
+      right:0;
+      margin: auto;
+      /* Prevent repainting when header text changes */
+      transform: translate3d(0, 0, 0);
+    }
+
+    polymer-p2r.neutral .header-div #neutral,
+    polymer-p2r.pulled .header-div #pulled,
+    polymer-p2r.loading .header-div #loading {
+      opacity: 1;
+    }
+
+    polymer-p2r.neutral .header-div #pulled,
+    polymer-p2r.neutral .header-div #loading,
+    polymer-p2r.pulled .header-div #neutral,
+    polymer-p2r.pulled .header-div #loading,
+    polymer-p2r.loading .header-div #pulled,
+    polymer-p2r.loading .header-div #neutral {
+      opacity: 0;
+    }
+
+    .content {
+      background: linear-gradient(
+        to bottom,
+        #afa,
+        #afa 50%,
+        #8f8 50%,
+        #8f8
+      );
+      background-size: 100% 100px;
+      height:1500px;
+      width:100%;
+    }
+  </style>
+  <body>
+    <polymer-p2r class="neutral" unresolved>
+      <div class="p2rheader">
+        <div class="header-div">
+          <p id="neutral">Pull down to refresh...</p>
+          <p id="pulled">Release to refresh...</p>
+          <p id="loading">Loading...</p>
+        </div>
+      </div>
+      <div class="content">
+      </div>
+    </polymer-p2r>
+  </body>
+</html>
