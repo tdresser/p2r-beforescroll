@@ -184,7 +184,7 @@ Polymer('polymer-p2r', {
         setHeaderClassName('loading');
         setTimeout(finishLoading, 2000);
         console.log("VELOCITY " + velocity);
-        if (velocity < -2)
+        if (velocity > -2)
           overscroll.setTarget(loadingOffset);
         overscroll.setVelocity(velocity);
       } else {
